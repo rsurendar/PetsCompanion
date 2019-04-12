@@ -1,8 +1,14 @@
 import { NgModule } from '@angular/core';
+import * as Material from '@angular/material';
 
 
-
-const MaterialComponents = [];
+const MaterialComponents = [
+  Material.MatToolbarModule,
+  Material.MatFormFieldModule,
+  Material.MatInputModule,
+  Material.MatButtonModule,
+  Material.MatDialogModule
+];
 
 @NgModule({
   imports: [MaterialComponents],

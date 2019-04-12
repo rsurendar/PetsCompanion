@@ -1,3 +1,33 @@
-<p>
-  sign-up works!
-</p>
+<form [formGroup]="customerService.form" class="normal-form">
+  <div class="controles-container">
+    <!--<input type="hidden" formControlName="$key">-->
+    <mat-form-field>
+      <label>Full Name</label>
+      <input formControlName="fullName" matInput>
+      <mat-error>This Full Name Field is Mandartory.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <label>Contact Number</label>
+      <input formControlName="mobile" matInput>
+      <mat-error *ngIf="customerService.form.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
+      <mat-error *ngIf="customerService.form.controls['mobile'].errors?.minlength">Minimum 10 charactors needed.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <label>Email</label>
+      <input formControlName="email" matInput>
+      <mat-error *ngIf="customerService.form.controls['email'].errors?.required">This field is mandatory.</mat-error>
+      <mat-error *ngIf="customerService.form.controls['email'].errors?.is-invalid">Invalid Email Adress</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <label>Password</label>
+      <input formControlName="password" matInput>
+    </mat-form-field>
+    <mat-form-field>
+      <label>Confirm Password</label>
+      <input formControlName="confirmPassword" matInput>
+    </mat-form-field>
+    <div class="button-row">
+      <button mat-raised-button color="primary" type="submit" [disabled]="customerService.form.invalid">Sign Up</button>
+    </div>
+  </div>
+</form>
